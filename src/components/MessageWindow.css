@@ -1,0 +1,31 @@
+.messageWindow {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  order: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  border-left: 1px solid var(--conversation-panel-border);
+}
+
+.messageWindow_background {
+  opacity: 0.06;
+  background-size: 420px 750px;
+  background-repeat: repeat;
+  background-image: url("/bg-chat-image.png");
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.messageWindow__messages {
+  margin-top: 50px;
+}
