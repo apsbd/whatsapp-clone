@@ -1,0 +1,85 @@
+.roomListItem {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 72px;
+    pointer-events: all;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+    border-bottom: 1px solid var(--border-list);
+    text-decoration: none;
+}
+
+.roomListItem h3 {
+    padding: 20px;
+}
+
+.roomListItem:hover {
+    background-color: var(--background-default-hover);
+}
+
+.roomListItem.active {
+    background-color: var(--background-default-active);
+}
+
+.roomListItem__avatar {
+    padding: 0 15px 0 13px;
+}
+
+.roomListItem__avaterWrapper {
+    height: 49px;
+    width: 49px;
+    background-color: var(--avatar-background);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.roomListItem__avaterWrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.roomListItem__text {
+    padding-right: 15px;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    min-width: 0;
+}
+
+.roomListItem__textHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.roomListItem__textHeaderName {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--primary-strong);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+}
+
+.roomListItem__textHeaderDate {
+    color: var(--secondary);
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.roomListItem__textLatestChat {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--secondary);
+    font-size: 13px;
+    line-height: 20px;
+}

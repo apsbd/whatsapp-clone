@@ -1,13 +1,424 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scrollbar-color: rgba(0, 0, 0, 0.2) hsla(0, 0%, 100%, 0.1);
+    scrollbar-width: thin;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+.app {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    min-width: 720px;
+}
+
+body {
+    font-family: Segoe UI, Helvetica Neue, Helvetica, Lucida Grande, Arial,
+        Ubuntu, Cantarell, Fira Sans, sans-serif;
+    color: #4a4a4a;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern';
+    -webkit-font-feature-settings: 'kern';
+    -moz-font-feature-settings: 'kern';
+    -moz-font-feature-settings: 'kern=1';
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #dddbd1;
+    background-image: linear-gradient(180deg, #dddbd1, #d2dbdc);
+    display: block;
+    line-height: 1;
+}
+
+body.dark {
+    background-color: var(--app-background);
+    background-image: none;
+}
+
+.dark {
+    --active-tab-marker: #00af9c;
+    --active-tab-marker-rgb: 0, 175, 156;
+
+    --app-background: #090e11;
+    --app-background-rgb: 9.3, 13.74, 16.7;
+    --app-background-deeper: #090e11;
+    --app-background-deeper-rgb: 9.3, 13.74, 16.7;
+    --app-background-stripe: transparent;
+    --app-background-stripe-rgb: 0, 0, 0;
+
+    --background-default: #131c21;
+    --background-default-rgb: 18.6, 28.22, 33.4;
+    --background-default-active: #323739;
+    --background-default-active-rgb: 49.815, 54.58382, 57.185;
+    --background-default-hover: #2d3134;
+    --background-default-hover-rgb: 44.745, 49.27333, 52.155;
+
+    --border-bubble: rgba(241, 241, 242, 0.12);
+    --border-bubble-rgb: 241, 241, 242;
+    --border-default: #242d32;
+    --border-default-rgb: 36, 45, 50;
+    --border-list: #30383d;
+    --border-list-rgb: 48, 56, 61;
+    --border-panel: #30373b;
+    --border-panel-rgb: 48, 55, 59;
+    --border-strong: #3b4347;
+    --border-strong-rgb: 59, 67, 71;
+    --border-stronger: rgba(241, 241, 242, 0.11);
+    --border-stronger-rgb: 241, 241, 242;
+    --bubble-meta: rgba(241, 241, 242, 0.63);
+    --bubble-meta-rgb: 241, 241, 242;
+    --bubble-meta-icon: rgba(241, 241, 242, 0.63);
+    --bubble-meta-icon-rgb: 241, 241, 242;
+
+    --button-alternative: #68bbe4;
+    --button-alternative-rgb: 104, 187, 228;
+    --button-alternative-background: #262d31;
+    --button-alternative-background-rgb: 38, 45, 49;
+    --button-background-disabled: #2a2f32;
+    --button-background-disabled-rgb: 41.6, 47.46667, 50.4;
+    --button-bubble: rgba(0, 175, 156, 0.7);
+    --button-bubble-rgb: 0, 175, 156;
+    --button-plain-background: #2f3437;
+    --button-plain-background-rgb: 47.1, 51.86667, 54.9;
+    --button-primary: #131c21;
+    --button-primary-rgb: 18.6, 28.22, 33.4;
+    --button-primary-background: #00af9c;
+    --button-primary-background-rgb: 0, 175, 156;
+    --button-primary-background-hover: #00c3ae;
+    --button-primary-background-hover-rgb: 0, 195.4, 174.18514;
+    --button-round-background: #00af9c;
+    --button-round-background-rgb: 0, 175, 156;
+    --button-secondary: #00af9c;
+    --button-secondary-rgb: 0, 175, 156;
+    --button-secondary-background: transparent;
+    --button-secondary-background-rgb: 0, 0, 0;
+    --button-secondary-background-hover: rgba(241, 241, 242, 0.05);
+    --button-secondary-background-hover-rgb: 241, 241, 242;
+    --button-secondary-hover: #00af9c;
+    --button-secondary-hover-rgb: 0, 175, 156;
+
+    --chat-marker: #999;
+    --chat-marker-rgb: 153, 153, 153;
+    --chat-marker-admin: #00af9c;
+    --chat-marker-admin-rgb: 0, 175, 156;
+    --chat-marker-admin-border: rgba(0, 175, 156, 0.7);
+    --chat-marker-admin-border-rgb: 0, 175, 156;
+    --chat-marker-border: hsla(0, 0%, 60%, 0.7);
+    --chat-marker-border-rgb: 153, 153, 153;
+    --chatlist-icon: rgba(241, 241, 242, 0.63);
+
+    --chatlist-icon-rgb: 241, 241, 242;
+    --checkbox-background: #00af9c;
+    --checkbox-background-rgb: 0, 175, 156;
+    --checkbox-mark: #131c21;
+    --checkbox-mark-rgb: 18.6, 28.22, 33.4;
+
+    --compose-input-background: #33383b;
+    --compose-input-background-rgb: 51.22296, 56.04619, 58.67704;
+    --compose-input-background-focused: #3f5560;
+    --compose-input-background-focused-rgb: 63, 85, 96;
+    --compose-input-border: #33383b;
+    --compose-input-border-rgb: 51.22296, 56.04619, 58.67704;
+    --compose-input-border-focused: #415a67;
+    --compose-input-border-focused-rgb: 65, 90, 103;
+    --compose-panel-background: #1e2428;
+    --compose-panel-background-rgb: 29.591, 36.36026, 40.309;
+    --compose-panel-background-hover: #151e23;
+    --compose-panel-background-hover-rgb: 21, 30, 35;
+    --compose-primary: #f1f1f2;
+    --compose-primary-rgb: 241, 241, 242;
+
+    --conversation-panel-background: #0d1418;
+    --conversation-panel-background-rgb: 13.12731, 19.91681, 23.57269;
+    --conversation-panel-border: rgba(241, 241, 242, 0.12);
+    --conversation-panel-border-rgb: 241, 241, 242;
+
+    --danger: #ef697a;
+    --danger-rgb: 239, 105, 122;
+
+    --drawer-background: #131c21;
+    --drawer-background-rgb: 18.6, 28.22, 33.4;
+    --drawer-background-deep: #0d1418;
+    --drawer-background-deep-rgb: 13.12731, 19.91681, 23.57269;
+    --drawer-gallery-background: #131c21;
+    --drawer-gallery-background-rgb: 18.6, 28.22, 33.4;
+    --drawer-gallery-background-active: #0d1418;
+    --drawer-gallery-background-active-rgb: 13.12731, 19.91681, 23.57269;
+    --drawer-gallery-background-hover: #0d1418;
+    --drawer-gallery-background-hover-rgb: 13.12731, 19.91681, 23.57269;
+    --drawer-header-title: #e1e1e3;
+    --drawer-header-title-rgb: 225, 225, 227;
+    --drawer-section-background: #131c21;
+    --drawer-section-background-rgb: 18.6, 28.22, 33.4;
+
+    --dropdown-background: #2a2f32;
+    --dropdown-background-rgb: 41.6, 47.46667, 50.4;
+    --dropdown-background-hover: #20272b;
+    --dropdown-background-hover-rgb: 31.75, 39.01316, 43.25;
+
+    --empty-state-background: #20272b;
+    --empty-state-background-rgb: 31.75, 39.01316, 43.25;
+    --empty-state-icon: #777c7f;
+    --empty-state-icon-rgb: 119, 124, 127;
+
+    --ephemeral-nux-bubble: hsla(0, 0%, 100%, 0.5);
+    --ephemeral-nux-bubble-rgb: 255, 255, 255;
+    --ephemeral-nux-timer: #1898ff;
+    --ephemeral-nux-timer-rgb: 24, 152, 255;
+
+    --focus: #68bbe4;
+    --focus-rgb: 104, 187, 228;
+
+    --focus-animation: rgba(104, 187, 228, 0.26);
+    --focus-animation-rgb: 104, 187, 228;
+    --focus-animation-deeper: rgba(104, 187, 228, 0.32);
+    --focus-animation-deeper-rgb: 104, 187, 228;
+    --focus-lighter: rgba(104, 187, 228, 0.12);
+    --focus-lighter-rgb: 104, 187, 228;
+    --highlight: #00af9c;
+    --highlight-rgb: 0, 175, 156;
+
+    --icon: #828689;
+    --icon-rgb: 130, 134, 137;
+    --icon-ack: #34b7f1;
+    --icon-ack-rgb: 52, 183, 241;
+    --icon-disabled: #3f4549;
+    --icon-disabled-rgb: 63, 69, 73;
+    --icon-fixed: #828689;
+    --icon-fixed-rgb: 130, 134, 137;
+    --icon-lighter: rgba(241, 241, 242, 0.3);
+    --icon-lighter-rgb: 241, 241, 242;
+    --icon-search-back: #73787b;
+    --icon-search-back-rgb: 115, 120, 123;
+    --icon-strong: #c5c6c8;
+    --icon-strong-rgb: 197, 198, 200;
+
+    --incoming-background: #262d31;
+    --incoming-background-rgb: 38.35, 44.85526, 48.65;
+    --incoming-background-deeper: #20262a;
+    --incoming-background-deeper-rgb: 32, 38, 42;
+    --incoming-background-highlight: #ccc;
+    --incoming-background-highlight-rgb: 204, 204, 204;
+    --incoming-primary: #797c7e;
+    --incoming-primary-rgb: 121, 124, 126;
+
+    --input-border-active: #00af9c;
+    --input-border-active-rgb: 0, 175, 156;
+    --input-placeholder: rgba(241, 241, 242, 0.43);
+    --input-placeholder-rgb: 241, 241, 242;
+
+    --inverse: #f1f1f2;
+    --inverse-rgb: 241, 241, 242;
+    --labels-icon: rgba(241, 241, 242, 0.4);
+    --labels-icon-rgb: 241, 241, 242;
+    --link: #68bbe4;
+    --link-rgb: 104, 187, 228;
+
+    --menu-context-sticker-icon: rgba(241, 241, 242, 0.5);
+    --menu-context-sticker-icon-rgb: 241, 241, 242;
+    --menu-context-sticker-icon-inverse: rgba(48, 48, 48, 0.5);
+    --menu-context-sticker-icon-inverse-rgb: 48, 48, 48;
+    --menu-tabs-list-active: #00af9c;
+    --menu-tabs-list-active-rgb: 0, 175, 156;
+
+    --message-background-deep: rgba(9, 14, 17, 0.35);
+    --message-background-deep-rgb: 9.3, 13.74, 16.7;
+    --message-placeholder-icon: hsla(0, 0%, 80%, 0.3);
+    --message-placeholder-icon-rgb: 204, 204, 204;
+    --message-primary: rgba(241, 241, 242, 0.95);
+    --message-primary-rgb: 241, 241, 242;
+    --message-selection-highlight: rgba(241, 241, 242, 0.05);
+    --message-selection-highlight-rgb: 241, 241, 242;
+
+    --modal-backdrop: rgba(9, 14, 17, 0.85);
+    --modal-backdrop-rgb: 9.3, 13.74, 16.7;
+    --modal-backdrop-solid: #20272b;
+    --modal-backdrop-solid-rgb: 31.75, 39.01316, 43.25;
+    --modal-background: #3b4042;
+    --modal-background-rgb: 59, 63.52941, 66;
+
+    --notification-biz-background: #20272b;
+    --notification-biz-background-rgb: 31.75, 39.01316, 43.25;
+    --notification-biz-text: #55fad9;
+    --notification-biz-text-rgb: 85, 250, 217;
+    --notification-e2e-background: #20272b;
+    --notification-e2e-background-rgb: 31.75, 39.01316, 43.25;
+    --notification-e2e-icon: #fad964;
+    --notification-e2e-icon-rgb: 250, 217, 100;
+    --notification-e2e-text: #fad964;
+    --notification-e2e-text-rgb: 250, 217, 100;
+    --notification-text: rgba(241, 241, 242, 0.4);
+    --notification-text-rgb: 241, 241, 242;
+
+    --outgoing-background: #054740;
+    --outgoing-background-rgb: 5, 71, 64;
+    --outgoing-background-deeper: #063b36;
+    --outgoing-background-deeper-rgb: 6, 59, 54;
+    --outgoing-background-highlight: #ccc;
+    --outgoing-background-highlight-rgb: 204, 204, 204;
+
+    --overlay: #090e11;
+    --overlay-rgb: 9.3, 13.74, 16.7;
+
+    --panel-background: #20272b;
+    --panel-background-rgb: 31.75, 39.01316, 43.25;
+    --panel-background-active: #1e2529;
+    --panel-background-active-rgb: 30, 37, 41;
+    --panel-background-colored: #323739;
+    --panel-background-colored-rgb: 49.815, 54.58382, 57.185;
+    --panel-background-colored-deeper: #323739;
+    --panel-background-colored-deeper-rgb: 49.815, 54.58382, 57.185;
+    --panel-background-deep: #191f23;
+    --panel-background-deep-rgb: 25, 31, 35;
+    --panel-background-deeper: #1e2429;
+    --panel-background-deeper-rgb: 30, 36, 41;
+    --panel-background-hover: #1e2429;
+    --panel-background-hover-rgb: 30, 36, 41;
+    --panel-background-lighter: #1e2429;
+    --panel-background-lighter-rgb: 30, 36, 41;
+    --panel-header-background: #2a2f32;
+    --panel-header-background-rgb: 41.6, 47.46667, 50.4;
+    --panel-header-icon: #b1b3b5;
+    --panel-header-icon-rgb: 177, 179, 181;
+    --panel-input-background: #262d31;
+    --panel-input-background-rgb: 38.35, 44.85526, 48.65;
+    --panel-primary: rgba(241, 241, 242, 0.35);
+    --panel-primary-rgb: 241, 241, 242;
+
+    --popup-panel-background: #131c21;
+    --popup-panel-background-rgb: 18.6, 28.22, 33.4;
+
+    --primary: #d4d5d7;
+    --primary-rgb: 212, 213, 215;
+    --primary-strong: rgba(241, 241, 242, 0.92);
+    --primary-strong-rgb: 241, 241, 242;
+    --primary-stronger: rgba(241, 241, 242, 0.88);
+    --primary-stronger-rgb: 241, 241, 242;
+    --primary-strongest: #fff;
+    --primary-strongest-rgb: 255, 255, 255;
+    --primary-title: rgba(241, 241, 242, 0.88);
+    --primary-title-rgb: 241, 241, 242;
+
+    --progress-background: #2a2f32;
+    --progress-background-rgb: 41.6, 47.46667, 50.4;
+    --progress-primary: #0c897c;
+    --progress-primary-rgb: 12, 137, 124;
+
+    --ptt-blue: #34b7f1;
+    --ptt-blue-rgb: 52, 183, 241;
+    --ptt-button-cancel: #ef697a;
+    --ptt-button-cancel-rgb: 239, 105, 122;
+    --ptt-button-send: #40cf6c;
+    --ptt-button-send-rgb: 64, 207, 108;
+    --ptt-gray: rgba(241, 241, 242, 0.4);
+    --ptt-gray-rgb: 241, 241, 242;
+    --ptt-green: #09d261;
+    --ptt-green-rgb: 9, 210, 97;
+    --ptt-message-blue: #68bbe4;
+    --ptt-message-blue-rgb: 104, 187, 228;
+
+    --quick-action-button: rgba(241, 241, 242, 0.5);
+    --quick-action-button-rgb: 241, 241, 242;
+    --quick-action-button-background: rgba(9, 14, 17, 0.6);
+    --quick-action-button-background-rgb: 9.3, 13.74, 16.7;
+
+    --rich-text-panel-background: #1e2428;
+    --rich-text-panel-background-rgb: 29.591, 36.36026, 40.309;
+
+    --search-container-background: #131c21;
+    --search-container-background-rgb: 18.6, 28.22, 33.4;
+    --search-input-background: #323739;
+    --search-input-background-rgb: 49.815, 54.58382, 57.185;
+
+    --secondary: rgba(241, 241, 242, 0.63);
+    --secondary-rgb: 241, 241, 242;
+    --secondary-light: rgba(241, 241, 242, 0.25);
+    --secondary-light-rgb: 241, 241, 242;
+    --secondary-lighter: rgba(241, 241, 242, 0.45);
+    --secondary-lighter-rgb: 241, 241, 242;
+    --secondary-stronger: rgba(241, 241, 242, 0.8);
+    --secondary-stronger-rgb: 241, 241, 242;
+
+    --shadow: #000;
+    --shadow-rgb: 0, 0, 0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-light-rgb: 0, 0, 0;
+
+    --spinner-default: #75787a;
+    --spinner-default-rgb: 117, 120, 122;
+    --spinner-highlight: #00af9c;
+    --spinner-highlight-rgb: 0, 175, 156;
+    --spinner-incoming: #63686b;
+    --spinner-incoming-rgb: 99, 104, 107;
+    --spinner-outgoing: #4c7a75;
+    --spinner-outgoing-rgb: 76, 122, 117;
+
+    --startup-background: #131c21;
+    --startup-background-rgb: 18.6, 28.22, 33.4;
+    --startup-icon: #6c7175;
+    --startup-icon-rgb: 108, 113, 117;
+
+    --status-background: #000;
+    --status-background-rgb: 0, 0, 0;
+    --status-background-hover: #242424;
+    --status-background-hover-rgb: 36, 36, 36;
+    --status-primary: #fff;
+    --status-primary-rgb: 255, 255, 255;
+    --status-secondary: hsla(0, 0%, 100%, 0.55);
+    --status-secondary-rgb: 255, 255, 255;
+    --status-secondary-stronger: #b3b3b3;
+    --status-secondary-stronger-rgb: 179, 179, 179;
+
+    --success: #00af9c;
+    --success-rgb: 0, 175, 156;
+
+    --teal-hover: #00b7a1;
+    --teal-hover-rgb: 0, 183, 161;
+    --teal-pale: #5fc8bc;
+    --teal-pale-rgb: 95, 200, 188;
+
+    --toast-background: rgba(9, 14, 17, 0.96);
+    --toast-background-rgb: 9.3, 13.74, 16.7;
+    --tooltip-background: rgba(42, 46, 48, 0.85);
+    --tooltip-background-rgb: 41.71478, 45.64271, 47.78522;
+    --typing: #00af9c;
+    --typing-rgb: 0, 175, 156;
+
+    --unread-background: #20272b;
+    --unread-background-rgb: 31.75, 39.01316, 43.25;
+    --unread-bar-background: rgba(9, 14, 17, 0.6);
+    --unread-bar-background-rgb: 9.3, 13.74, 16.7;
+    --unread-marker-background: #00af9c;
+    --unread-marker-background-rgb: 0, 175, 156;
+    --unread-marker-text: #131c21;
+    --unread-marker-text-rgb: 18.6, 28.22, 33.4;
+
+    --vcard-placeholder-background: rgba(241, 241, 242, 0.04);
+    --vcard-placeholder-background-rgb: 241, 241, 242;
+    --vcard-placeholder-background-deeper: rgba(241, 241, 242, 0.12);
+    --vcard-placeholder-background-deeper-rgb: 241, 241, 242;
+
+    --wallpaper-background: #0d1418;
+    --wallpaper-background-rgb: 13.12731, 19.91681, 23.57269;
+}
+
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-track {
+    background: hsla(0, 0%, 100%, 0.1);
+}
+
+.MuiSvgIcon-root {
+    color: var(--primary);
 }

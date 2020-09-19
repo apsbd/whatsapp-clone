@@ -1,0 +1,306 @@
+.chatWindow {
+    flex: 70%;
+    background-color: var(--conversation-panel-background);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chatWindow__start {
+    margin-top: 50px;
+}
+
+.chatWindow__background {
+    opacity: 0.06;
+    background-size: 420px 750px;
+    background-repeat: repeat;
+    background-image: url('/bg-chat-image.png');
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.chatWindow__header {
+    padding: 10px 16px;
+    background-color: var(--panel-header-background);
+    box-shadow: 0 1px 3px rgba(var(--shadow-rgb), 0.4);
+    border-left: 1px solid var(--border-stronger);
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 59px;
+}
+
+.chatWindow__header {
+    padding: 10px 16px;
+    background-color: var(--panel-header-background);
+    box-shadow: 0 1px 3px rgba(var(--shadow-rgb), 0.4);
+    border-left: 1px solid var(--border-stronger);
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 59px;
+}
+
+.chatWindow__headerLeft {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.chatWindow__headerLeft__avatar {
+    padding: 0 15px 0 13px;
+}
+
+.chatWindow__headerLeft__text {
+    padding-right: 15px;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    min-width: 0;
+}
+
+.chatWindow__headerLeft__textHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatWindow__headerLeft__textHeaderName {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--primary-strong);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+}
+
+.chatWindow__headerLeft__textLatestChat {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--secondary);
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.chatWindow__content {
+    flex: 1 1 0;
+    order: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    border-left: 1px solid var(--conversation-panel-border);
+}
+
+.chatWindow__content__background {
+    opacity: 0.06;
+    background-size: 420px 750px;
+    background-repeat: repeat;
+    background-image: url('/bg-chat-image.png');
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.chatWindow__content__messages {
+    margin-top: 50px;
+}
+
+.chatWindow__content__info {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    text-align: center;
+    color: var(--primary-strong);
+    position: relative;
+    z-index: 999;
+}
+
+.chatWindow__content__infoWrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.chatWindow__content__info span {
+    padding: 10px;
+}
+
+.chatWindow__content__info button {
+    background-color: var(--button-secondary);
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+}
+
+.chatWindow__footer {
+    background-color: var(--compose-panel-background);
+    border-left: 1px solid var(--border-default);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: none;
+    height: 49px;
+    z-index: 1;
+    flex: none;
+    order: 3;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 62px;
+}
+
+.chatWindow__footer form {
+    width: 100%;
+    height: 100%;
+}
+
+.chatWindow__footerLabel {
+    background-color: var(--search-input-background);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 35px;
+    width: 100%;
+    margin: 15px;
+    padding-left: 15px;
+}
+
+.chatWindow__footerInput {
+    color: var(--primary);
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+.chatWindow__info {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    text-align: center;
+    color: var(--primary-strong);
+    position: relative;
+    z-index: 999;
+}
+
+.chatWindow__infoWrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.chatWindow__info span {
+    padding: 10px;
+}
+
+.chatWindow__info button {
+    background-color: var(--button-secondary);
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+}
+
+.message {
+    padding-right: 9%;
+    padding-left: 9%;
+    margin-bottom: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.message__in {
+    justify-content: flex-start;
+}
+
+.message__out {
+    justify-content: flex-end;
+}
+
+.message__avatar {
+    margin: 0 20px;
+}
+
+.message__wrapper {
+    border-radius: 7.5px;
+    max-width: 65%;
+    position: relative;
+    flex: none;
+    color: var(--message-primary);
+    font-size: 14.2px;
+    line-height: 19px;
+}
+
+.message__content {
+    position: relative;
+}
+
+.message__sender {
+    margin-bottom: 5px;
+    color: var(--secondary);
+}
+
+.message__in .message__sender {
+    text-align: left;
+}
+
+.message__out .message__sender {
+    text-align: right;
+}
+
+.message__tail {
+    position: absolute;
+    top: -1px;
+    z-index: 100;
+    display: block;
+    width: 8px;
+    height: 13px;
+}
+
+.message__in .message__tail {
+    left: -8px;
+    color: var(--incoming-background);
+}
+
+.message__out .message__tail {
+    right: -8px;
+    color: var(--outgoing-background);
+}
+
+.message__box {
+    border-radius: 7.5px;
+    box-shadow: 0 1px 0.5px rgba(var(--shadow-rgb), 0.13);
+    padding: 6px 7px 8px 9px;
+}
+
+.message__in .message__box {
+    border-top-left-radius: 0;
+    background-color: var(--incoming-background);
+}
+
+.message__out .message__box {
+    border-top-right-radius: 0;
+    background-color: var(--outgoing-background);
+}
