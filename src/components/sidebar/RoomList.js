@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { setRooms } from '../../redux/actions/roomsAction'
+import { setRooms, addNewRoom } from '../../redux/actions/roomsAction'
 import { setSelectedRoom } from '../../redux/actions/selectedRoomActions'
 import RoomListItem from './RoomListItem'
 
-function RoomList({ rooms, setRooms, setSelectedRoom }) {
+function RoomList({ rooms, setRooms, setSelectedRoom, addNewRoom }) {
     useEffect(() => {
         let unsubscribe = setRooms()
 
@@ -16,6 +16,7 @@ function RoomList({ rooms, setRooms, setSelectedRoom }) {
 
     return (
         <div className='sidebar__roomList'>
+            <RoomListItem addNewRoom addNewRoom={addNewRoom} />
             {rooms.map((room) => (
                 <RoomListItem
                     room={room}
@@ -38,6 +39,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     setRooms,
     setSelectedRoom,
+    addNewRoom,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomList)

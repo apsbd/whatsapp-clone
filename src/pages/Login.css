@@ -32,7 +32,6 @@
     border: none;
     padding: 10px 20px;
     background-color: var(--button-secondary);
-    color: var(--secondary);
     cursor: pointer;
 }
 

@@ -4,8 +4,12 @@ import { Avatar } from '@material-ui/core'
 
 import './RoomListItem.css'
 
-export default function RoomListItem({ room, handleClick }) {
-    return (
+export default function RoomListItem({ addNewRoom, room, handleClick }) {
+    return addNewRoom ? (
+        <div className='roomListItem' onClick={addNewRoom}>
+            <h3>Add New Room</h3>
+        </div>
+    ) : (
         <NavLink
             to={`/app/rooms/${room.id}`}
             className='roomListItem'

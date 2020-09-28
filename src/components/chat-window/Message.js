@@ -10,6 +10,13 @@ export default function Message({ user, message, incomming }) {
         <Avatar src={user.photoUrl} className='message__avatar'></Avatar>
     )
     const messageEl = <div className='message__box'>{message}</div>
+    const nameEl = (
+        <div className='message__sender'>
+            {user.name} {message.createdAt}
+        </div>
+    )
+
+    console.log(message)
 
     return (
         <div className={className}>
@@ -17,7 +24,7 @@ export default function Message({ user, message, incomming }) {
                 <>
                     {avatarEl}
                     <div className='message__wrapper'>
-                        <div className='message__sender'>{user.name}</div>
+                        {nameEl}
                         <div className='message__content'>
                             <MessageTailIn />
                             {messageEl}
@@ -27,7 +34,7 @@ export default function Message({ user, message, incomming }) {
             ) : (
                 <>
                     <div className='message__wrapper'>
-                        <div className='message__sender'>{user.name}</div>
+                        {nameEl}
                         <div className='message__content'>
                             {messageEl}
                             <MessageTailOut />

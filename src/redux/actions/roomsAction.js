@@ -1,5 +1,5 @@
 import * as types from './types'
-import { fireStore } from '../../firebase/config'
+import { fireStore, timestamp } from '../../firebase/config'
 
 const loadRoomsSuccess = (rooms) => {
     return {
@@ -8,15 +8,30 @@ const loadRoomsSuccess = (rooms) => {
     }
 }
 
+export const addNewRoom = () => {
+    return (dispatch) => {
+        const name = prompt('Please, enter a room name')
+        if (name) {
+            fireStore.collection('rooms').add({
+                name,
+                createdAt: timestamp(),
+            })
+        }
+    }
+}
+
 export const setRooms = () => {
     return (dispatch) => {
-        return fireStore.collection('rooms').onSnapshot((snap) => {
-            let rooms = snap.docs.map((room) => ({
-                id: room.id,
-                ...room.data(),
-            }))
+        return fireStore
+            .collection('rooms')
+            .orderBy('createdAt', 'asc')
+            .onSnapshot((snap) => {
+                let rooms = snap.docs.map((room) => ({
+                    id: room.id,
+                    ...room.data(),
+                }))
 
-            dispatch(loadRoomsSuccess(rooms))
-        })
+                dispatch(loadRoomsSuccess(rooms))
+            })
     }
 }

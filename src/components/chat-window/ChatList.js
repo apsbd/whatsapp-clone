@@ -3,7 +3,7 @@ import React from 'react'
 import Info from './Info'
 import Message from './Message'
 
-export default function ChatList({ roomId, user, chats }) {
+export default function ChatList({ roomId, user, chats, addNewRoom }) {
     // filter all chats
     chats = chats.filter((chat) => chat.roomId === roomId)
 
@@ -22,7 +22,7 @@ export default function ChatList({ roomId, user, chats }) {
                     ))}
                 </>
             ) : (
-                <Info />
+                <Info addNewRoom={addNewRoom} />
             )}
         </div>
     )
