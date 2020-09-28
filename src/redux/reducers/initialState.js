@@ -1,6 +1,6 @@
 export default {
     auth: {
-        isAuthenticated: true,
+        isAuthenticated: false,
         user: {
             uid: '',
             name: '',
